@@ -1,0 +1,114 @@
+StoreList.java
+package satu;
+
+import java.util.ArrayList;
+
+public class StoreList {
+	private ArrayList<Store> stores = new ArrayList<Store>();
+	
+	public void addStore (String idStore, String nameStore, int max) {
+		for (Store store : stores) {
+			if (store.getId().equals(idStore)) {
+				System.out.println("[!] Not Successfully Insert New Store");
+				return;
+			}
+		}
+		Store temp = new Store(idStore, nameStore, max);
+		stores.add(temp);
+		System.out.println("[!] Successfully Insert New Store");
+		return;
+	}
+	
+	public void removeStore (String id) {
+		for (int  i= 0; i < stores.size(); i++) {
+			Store store = stores.get(i);
+			if (store.getId().equals(id)) {
+				stores.remove(i);
+				System.out.println("[!] Successfully Removed Store");
+				return;
+			}
+		}
+		System.out.println("[!] Do Not Successfully Remove Store");
+		return;
+	}
+	
+	public void updateStoreName(String id, String name) {
+		for (Store store : stores) {
+			if (store.getId().equals(id)) {
+				store.setName(name);
+				System.out.println("[!] Successfully Changed Store Name");
+				return;
+			}
+		}
+		System.out.println("[!] Do Not Successfully Changed Store Name ");
+		return;
+	}
+	
+	public void addItemToStore (String idStore, String idItem, String nameItem, String brandItem, double price, int qty) {
+		for (Store store : stores) {
+			if (store.getId().equals(idStore)) {
+				store.addItemtoStore(idItem, nameItem, brandItem, price, qty);
+				return;
+			}
+		}
+		System.out.println("[!] Item Not Found");
+		return;
+	}
+	
+	public void updateItemInStore (String idStore, String idItem, String nameItem, String brandItem, double price, int qty) {
+		for (Store store : stores) {
+			if (store.getId().equals(idStore)) {
+				store.updateItem(idItem, nameItem, brandItem, price, qty);
+				return;
+			}
+		}
+		return ;
+	}
+	
+	public void removeItemFromStore (String idStore, String idItem) {
+		for (Store store : stores) {
+			if (store.getId().equals(idStore)) {
+				store.removeItem(idItem);
+				return;
+			}
+		}
+		return;
+	}
+	
+	public Store findStoreById(String id) {
+		for (Store store : stores) {
+			if (store.getId().equals(id)) return store;
+		}
+		return null;
+	}
+	
+	public ArrayList<Store> getAllStores(){
+		return new ArrayList<Store>(stores);
+	}
+	
+	public boolean isStoreExists (String id) {
+		for (Store store : stores) {
+			if (store.getId().equals(id)) return true;
+		}
+		return false;
+	}
+	
+	public boolean isItemExist (String idStore, String idItem) {
+		for (Store store : stores) {
+			if (store.getId().equals(idStore)) {
+				if (store.isItemExist(idItem)) return true;
+			}
+		}
+		return false;
+	}
+	
+	public void viewAll() {
+		int cnt = 1;
+		for (Store store : stores) {
+			System.out.println(cnt++ + ". " + store.getName());
+			store.viewAll();
+		}
+		return;
+	}
+		
+}

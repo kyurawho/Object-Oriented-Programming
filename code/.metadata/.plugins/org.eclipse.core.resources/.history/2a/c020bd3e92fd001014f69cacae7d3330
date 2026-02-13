@@ -1,0 +1,87 @@
+public class Store {
+	private String id;
+	private String name;
+	private final int maxItem;
+	private ItemList itemsInStore;
+	
+	public Store(String id, String name, int maxItem) {
+		this.id = id;
+		this.name = name;
+		this.maxItem = maxItem;
+		this.itemsInStore = new ItemList();
+	}
+
+	public String getId() {
+		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ItemList getItemsInStore() {
+		return itemsInStore;
+	}
+
+	public void setItemsInStore(ItemList itemsInStore) {
+		this.itemsInStore = itemsInStore;
+	}
+
+	public int getMaxItem() {
+		return maxItem;
+	}
+	
+	public void addItemtoStore (String idItem, String nameItem, String brandItem, double price, int qty) {
+		if (itemsInStore.getItemListSize() >= maxItem) {
+			System.out.println("[!] Store Full");
+			return;
+		}
+		itemsInStore.addItem(idItem, nameItem, brandItem, price, qty);
+		return;
+	}
+	
+	public void removeItemfromStore (String id) {
+		itemsInStore.removeItem(id);
+		return;
+	}
+	
+	public int getCurretItemCount() {
+		return itemsInStore.getItemListSize();
+	}
+	
+	public boolean hasCapacity() {
+		if (maxItem - itemsInStore.getItemListSize() > 0) return true;
+		return false;
+	}
+	
+	public void updateItem (String id, String name, String brand, double price, int qty) {
+		itemsInStore.updateItem(id, name, brand, price, qty);
+		return;
+	}
+	
+	
+	public void removeItem (String id) {
+		itemsInStore.removeItem(id);
+		return;
+	}
+	
+	public boolean isItemExist(String id) {
+		return itemsInStore.isItemExist(id);
+	}
+	
+	public void viewAll () {
+		itemsInStore.viewAll();
+		return;
+	}
+	
+	
+	
+	
+
+	
+
+}

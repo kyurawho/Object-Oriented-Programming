@@ -1,0 +1,164 @@
+import java.util.Scanner;
+
+public class Main {
+	private static StoreList owner = new StoreList();
+	private static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		char pil;
+		while (true) {
+			System.out.println("=== MENU ===");
+			System.out.println("1. Insert New Store");
+			System.out.println("2. Insert Item To Grocery");
+			System.out.println("3. Update Store Name");
+			System.out.println("4. Update Item Information");
+			System.out.println("5. Remove Item");
+			System.out.println("6. Remove Store");
+			System.out.println("7. View All");
+			System.out.println("8. Exit");
+			System.out.print(">>");
+			pil = sc.next().charAt(0);
+			sc.nextLine();
+			int pilihan = pil - '0';
+			switch (pilihan) {
+				case 1:
+					insertNewStore();
+					break;
+				case 2:
+					insertItemToGrocery();
+					break;
+				case 3:
+					updateStoreName();
+					break;
+				case 4:
+					updateItemInformation();
+					break;
+				case 5:
+					removeItem();
+					break;
+				case 6:
+					removeStore();
+					break;
+				case 7:
+					displayAllStore();
+					break;
+				case 8:
+					System.exit(0);
+				default:
+					System.out.println("[!] Invalid Choice");
+					break;
+			}
+		}
+
+	}
+	
+	public static void insertNewStore() {
+		System.out.print("Insert Store Id: ");
+		String idStore = sc.nextLine();
+		if (owner.isStoreExists(idStore)) System.out.println("[!] Store has Exist");
+		else {
+			System.out.print("Inset Store Name: ");
+			String nameStore = sc.nextLine();
+			System.out.println("Insert Max Final Store: ");
+			int max = sc.nextInt();
+			sc.nextLine();
+			owner.addStore(idStore, nameStore, max);
+		}
+		return;
+	}
+	
+	public static void insertItemToGrocery () {
+		System.out.print("Insert Store Id: ");
+		String idStore = sc.nextLine();
+		if (owner.isStoreExists(idStore)) {
+			System.out.print("Insert Item Id: ");
+			String idItem = sc.nextLine();
+			System.out.print("Inset Item Name: ");
+			String nameItem = sc.nextLine();
+			System.out.print("Insert Item Brand: ");
+			String brandItem = sc.nextLine();
+			System.out.print("Insert Item Price: ");
+			double price = sc.nextDouble();
+			sc.nextLine();
+			System.out.print("Inset Item Quantity: ");
+			int qty = sc.nextInt();
+			sc.nextLine();
+			owner.addItemToStore(idStore, idItem, nameItem, brandItem, price, qty);
+		}
+		return;
+	}
+	
+	public static void updateStoreName () {
+		System.out.print("Insert Store Id: ");
+		String idStore = sc.nextLine();
+		if (owner.isStoreExists(idStore)) {
+			System.out.print("Insert New Store Name: ");
+			String nameStore = sc.nextLine();
+			owner.updateStoreName(idStore, nameStore);
+		}
+		else System.out.println("[!] Store Do Not Exist");
+		return;
+	}
+	
+	public static void updateItemInformation() {
+		System.out.print("Insert Store Id: ");
+		String idStore = sc.nextLine();
+		if (owner.isStoreExists(idStore)) {
+			System.out.print("Insert Item Id: ");
+			String idItem = sc.nextLine();
+			if (owner.isItemExist(idStore, idItem)){
+				System.out.print("Inset Item Name: ");
+				String nameItem = sc.nextLine();
+				System.out.print("Insert Item Brand: ");
+				String brandItem = sc.nextLine();
+				System.out.print("Insert Item Price: ");
+				double price = sc.nextDouble();
+				sc.nextLine();
+				System.out.print("Inset Item Quantity: ");
+				int qty = sc.nextInt();
+				sc.nextLine();
+				owner.updateItemInStore(idStore, idItem, nameItem, brandItem, price, qty); 
+			}
+			else {
+				System.out.println("[!] Item Do Not Exist");
+				return;
+			}
+		}
+		else {
+			System.out.println("[!] Store Do Not Exist");
+			return;
+		}
+	}
+	
+	public static void removeItem() {
+		System.out.print("Insert Store Id: ");
+		String idStore = sc.nextLine();
+		if (owner.isStoreExists(idStore)) {
+			System.out.print("Inset Item Id: ");
+			String idItem = sc.nextLine();
+			if (owner.isItemExist(idStore, idItem)) owner.removeItemFromStore(idStore, idItem);
+			else {
+				System.out.println("[!] Item Do Not Exist");
+				return;
+			}
+		}
+		else {
+			System.out.println("[!] Store Do Not Exist");
+			return;
+		}
+	}
+	
+	public static void removeStore() {
+		System.out.print("Insert Store Id: ");
+		String idStore = sc.nextLine();
+		if (owner.isStoreExists(idStore)) owner.removeStore(idStore);
+		else System.out.println("[!] Store Do Not Exist");
+		return;
+	}
+	
+	public static void displayAllStore() {
+		owner.viewAll();
+		return;
+	}
+
+}

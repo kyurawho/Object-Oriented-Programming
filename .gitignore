@@ -1,0 +1,17 @@
+# Ignore semua folder dengan nama tertentu di seluruh struktur direktori
+ppt/
+assignment/
+else/
+.metadata/
+
+# Opsional: ignore juga file-file umum yang nggak perlu di-commit
+*.ppt
+*.pptx
+*.pdf
+*.doc
+*.docx
+*.zip
+*.rar
+*.exe
+.DS_Store
+Thumbs.db
