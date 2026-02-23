@@ -5,4 +5,6 @@
     <fullyQualifiedTypeName name="java.util.jar.Attributes.Name"/>
     <fullyQualifiedTypeName name="main.Main"/>
     <fullyQualifiedTypeName name="java.awt.desktop.PrintFilesEvent"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="javax.swing.text.View"/>
 </qualifiedTypeNameHistroy>
