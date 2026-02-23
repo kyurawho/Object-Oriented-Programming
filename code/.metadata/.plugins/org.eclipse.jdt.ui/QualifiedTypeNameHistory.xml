@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="people.Patient"/>
+    <fullyQualifiedTypeName name="people.Doctor"/>
+    <fullyQualifiedTypeName name="java.util.jar.Attributes.Name"/>
+    <fullyQualifiedTypeName name="main.Main"/>
+    <fullyQualifiedTypeName name="java.awt.desktop.PrintFilesEvent"/>
+</qualifiedTypeNameHistroy>
