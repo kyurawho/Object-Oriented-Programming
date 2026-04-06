@@ -109,5 +109,19 @@ public class MediaList {
 				media.showHistory();				
 			}
 		}
+		
+		System.out.print("Index to delete (0: back): ");
+		ch = sc.nextInt();
+		sc.nextLine();
+		
+		if(ch == 0) return;
+		
+		i = 1;
+		for (Media media : medias) {
+			if(media.isPlayed()) {
+				if(i == ch) media.setPlayed(false);
+				i++;			
+			}
+		}
 	}
 }

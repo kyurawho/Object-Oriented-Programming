@@ -2,8 +2,8 @@ package youtube;
 
 public interface Skipable {
 	public default int skipForward(int playTime, int duration) {
-		if(playTime + 10 >= duration) playTime = duration;
-		else playTime += 10;
+		if(playTime + 5 >= duration) playTime = duration;
+		else playTime += 5;
 		return playTime;
 	}
 	
