@@ -1,0 +1,14 @@
+1. Melanggar single responsible principle (SRP)
+- dimana suatu class seharus hanya memiliki satu tujuan atau satu pekerjaan, namun disini, class EcommerceSystem mewakilki seluruh system tersebut, bukan satu tujuan
+- sehingga harus ada perbaikan dengan cara memisahkan setiap tujuan menjadi class sendiri. Seperti
+a. parent = shiping, child = JNT, JNE, SiCepat
+b. parent = payment, child = CreditCard, PayPal, Transfer
+c. parent = notification, child = Email, SMS, WhatsApp
+
+2. Melanggar Open Close principle (OCP)
+- Suatu class seharusnya open for extention, close for modification, pada method checkout, masih menggunakan if else if, sehingga apabila terdapat fitur baru, harus menambahkan else if lagi yang dimana melakukan modification.
+- Diperlukan suatu abstract class yang dapat menampung semua metodenya, sehingga tidak perlu menggunakan if else if
+
+3. Melanggar Depedency Inversion principle
+- EcommerceSystem langsung mesangial konkret class tanpa melalui interface atau abstract class.
+- Penggunaan dependency injection, supaya terdapat pemisah antara logika bisnis dengan detail implementasinya
